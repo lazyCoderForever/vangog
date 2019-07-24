@@ -1,0 +1,106 @@
+@import 'fonts.sass'
+
+$button-color: #fab91e
+$button-hover-color: #d39500
+$button-text-color:  #080425
+$menu-active: #211d3b
+$menu-default: #080425
+$child-menu-hover: #37344f
+$icon-color: #f9b81e
+
+    
+* 
+    box-sizing: border-box
+
+a 
+    text-decoration: none
+
+ul,li 
+    list-style: none
+
+body 
+    font-family: 'ProximaNova_Reg'
+
+.main-display
+    background-image: url('../../img/main-banner.png')
+    background-position: center center
+    background-repeat: no-repeat
+    background-size: cover
+
+    .slide-header
+        display: grid
+        grid-template-columns: 1fr 1fr 1fr
+        grid-template-rows: 1fr
+        margin: 0 5vw   
+        justify-items: center
+        align-items: center
+        color: #ffffff
+        font-size: 15px
+        font-weight: 500
+        line-height: 24px
+        font-family: 'Gotham_Reg'
+
+        .attention-text
+            font-family: 'Gotham_Medium'
+
+        .header-icon
+            position: absolute
+            bottom: 47%
+            left: 10%
+            color: $icon-color
+
+        .phone, .location /* Цвет текста переделать  */
+            position: relative
+            width: 100%
+            padding: 20%
+
+        .phone
+            border-right: 1px solid #74777b
+        .location
+            border-left: 1px solid #74777b
+
+        .logo
+            width: 102px
+            height: 102px
+            background-image: url('../../img/logo.png')
+            background-position: center center
+            background-size: contain
+            background-repeat: no-repeat
+
+    .main-menu
+        margin: 0 5vw
+
+    .top-menu
+        display: grid
+        grid-template-columns: repeat(6, 1fr)
+        justify-content: space-around
+        align-items: center 
+        color: #ffffff
+
+        .sub-menu
+            position: absolute
+            top: 100%
+            left: 0
+            width: 100%
+            padding: 0
+            background-color: $menu-active
+            li 
+                padding: 20px 5px
+                cursor: pointer
+
+        .fa-chevron-left
+            margin-left: 5px
+
+        &-item
+            position: relative
+            width: 100%
+            max-height: 118px
+            padding: 36px 15px
+            font-family: "ProximaNova_Semi"
+            font-size: 13px
+            font-weight: 400
+            line-height: 26px
+            text-transform: uppercase
+            text-align: center
+            cursor: pointer
+            background-color: $menu-default
