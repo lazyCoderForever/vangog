@@ -11,6 +11,8 @@ $icon-color: #f9b81e
     
 * 
     box-sizing: border-box
+    margin: 0
+    padding: 0
 
 a 
     text-decoration: none
@@ -21,6 +23,10 @@ ul,li
 body 
     font-family: 'ProximaNova_Reg'
 
+.container 
+    margin: 0 5vw
+    /* box-shadow: 0px 0px 0px 1px rgba(153,153,153,1) */ /* Потом включить */ 
+
 .main-display
     background-image: url('../../img/main-banner.png')
     background-position: center center
@@ -30,8 +36,7 @@ body
     .slide-header
         display: grid
         grid-template-columns: 1fr 1fr 1fr
-        grid-template-rows: 1fr
-        margin: 0 5vw   
+        grid-template-rows: 1fr 
         justify-items: center
         align-items: center
         color: #ffffff
@@ -52,7 +57,7 @@ body
         .phone, .location /* Цвет текста переделать  */
             position: relative
             width: 100%
-            padding: 20%
+            padding: 10% 20%
 
         .phone
             border-right: 1px solid #74777b
@@ -67,40 +72,83 @@ body
             background-size: contain
             background-repeat: no-repeat
 
-    .main-menu
-        margin: 0 5vw
+.main-menu
 
-    .top-menu
-        display: grid
-        grid-template-columns: repeat(6, 1fr)
-        justify-content: space-around
-        align-items: center 
-        color: #ffffff
 
-        .sub-menu
-            position: absolute
-            top: 100%
-            left: 0
-            width: 100%
-            padding: 0
-            background-color: $menu-active
-            li 
-                padding: 20px 5px
-                cursor: pointer
+.top-menu
+    display: grid
+    grid-template-columns: repeat(6, 1fr)
+    justify-content: space-around
+    align-items: center 
 
-        .fa-chevron-left
-            margin-left: 5px
+    color: #ffffff
 
-        &-item
-            position: relative
-            width: 100%
-            max-height: 118px
-            padding: 36px 15px
-            font-family: "ProximaNova_Semi"
-            font-size: 13px
-            font-weight: 400
-            line-height: 26px
-            text-transform: uppercase
-            text-align: center
+    .sub-menu
+        position: absolute
+        top: 100%
+        left: 0
+        width: 100%
+        padding: 0
+        background-color: $menu-active
+        transform: translateY(-200px) scale(0)
+        li 
+            padding: 20px 5px
             cursor: pointer
-            background-color: $menu-default
+            transition: 0.5s
+            &:hover
+                background-color: $child-menu-hover
+
+    .fa-chevron-left
+        margin-left: 5px
+        transition: 0.5s
+
+    &-item
+        position: relative
+        width: 100%
+        max-height: 118px
+        padding: 36px 15px
+        font-family: "ProximaNova_Semi"
+        font-size: 13px
+        font-weight: 400
+        line-height: 26px
+        text-transform: uppercase
+        text-align: center
+        cursor: pointer
+        background-color: $menu-default
+        transition: 0.5s
+        &:hover
+            background-color: $menu-active
+        &:hover .fa-chevron-left
+            transform: rotate(-90deg)
+        &:hover  .sub-menu
+            transition: 0.5s
+            transform: translateY(0px) scale(1)
+
+.previe-info
+    margin: 16% 10%
+    color: #ffffff
+    h1 
+        font-family: "Playfair_Reg"
+        font-size: 52px
+        font-weight: 700
+        line-height: 63px
+    h2
+        font-family: "Gotham_Reg"
+        font-size: 18px
+        font-weight: 400
+        line-height: 28px
+
+    .top-btn-wrap
+        display: flex
+        justify-content: flex-start
+        .top-btn
+            margin: 20px 0
+            padding: 20px
+            color: $button-text-color
+            background-color: $button-color
+        .btn-order
+            margin-left: 20px
+
+
+
+
