@@ -6,3 +6,13 @@ const my_func = (function (){
 })
 
 my_func();
+
+/*top slider */
+
+$(document).ready(function(){
+    $('.bottom-slider').slick({
+        prevArrow: '<button class="custom-btn slick-prev"><i class="fas fa-arrow-left"></i></button>',
+        nextArrow: '<button class="custom-btn slick-next"><i class="fas fa-arrow-right"></i></button>'
+    });
+  });
+                  
