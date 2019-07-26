@@ -1,5 +1,6 @@
 @import 'fonts.sass'
 
+
 $button-color: #fab91e
 $button-hover-color: #d39500
 $button-text-color:  #080425
@@ -27,6 +28,8 @@ $default-hover: #d39500
     box-sizing: border-box
     margin: 0
     padding: 0
+    &:focus
+        outline: none
 
 a 
     text-decoration: none
@@ -38,6 +41,7 @@ body
     font-family: 'ProximaNova_Reg'
 
 .container 
+    position: relative
     margin: 0 5vw
     /* box-shadow: 0px 0px 0px 1px rgba(153,153,153,1) */ /* Потом включить? border */ 
 .btn
@@ -62,14 +66,17 @@ body
         opacity: 0.6
     .fa-square
         color: $icon-color
-.main-display
-    background-image: url('../../img/main-banner.png')
-    background-position: center center
-    background-repeat: no-repeat
-    background-size: cover
-
+.head
+    position: fixed
+    width: 100%
+    z-index: 9999
+    &-wrap 
+        margin: 0 5vw
     .slide-header
         display: grid
+        width: 100%
+        margin: 0 auto
+        grid-template-areas: 'phone logo location'
         grid-template-columns: 1fr 1fr 1fr
         grid-template-rows: 1fr 
         justify-items: center
@@ -95,27 +102,30 @@ body
             padding: 10% 20%
 
         .phone
-            border-right: 1px solid #74777b
+            grid-area: phone
+            /* border-right: 1px solid #74777b */
         .location
-            border-left: 1px solid #74777b
+            grid-area: location
+            /* border-left: 1px solid #74777b */
 
         .logo
+            grid-area: logo
             width: 102px
             height: 102px
             background-image: url('../../img/logo.png')
             background-position: center center
             background-size: contain
             background-repeat: no-repeat
+    
 
 .main-menu
-
+    width: 100%
 
 .top-menu
     display: grid
     grid-template-columns: repeat(6, 1fr)
     justify-content: space-around
     align-items: center 
-
     color: #ffffff
 
     .sub-menu
@@ -151,6 +161,8 @@ body
         cursor: pointer
         background-color: $menu-default
         transition: 0.5s
+        a 
+            color: #ffffff
         &:hover
             background-color: $menu-active
         &:hover .fa-chevron-left
@@ -159,8 +171,128 @@ body
             transition: 0.5s
             transform: translateY(0px) scale(1)
 
+.open-responsive-menu
+    position: fixed
+    display: none
+    margin: 25px
+    width: 30px
+    height: 30px
+    background: $menu-default
+    border-radius: 17px
+    z-index: 9999
+    button
+        width: 100%
+        height: 100%
+        color: #ffffff
+        background: transparent
+        border: none
+
+.responsive-menu
+    display: none
+    position: absolute
+    width: 30%
+    top: 0
+    left: 0
+    grid-template-columns: 1fr
+    grid-template-rows: auto
+    z-index: 99999
+    .close-item
+        height: 50px
+        width: 100%
+        background-color: $menu-default
+    .close
+        width: 50px
+        height: 50px
+        background-color: transparent
+        border: none
+        color: #ffffff
+        &:focus
+            outline: none
+    &-item 
+        position: relative
+        display: flex
+        height: 100px
+        justify-content: flex-start
+        width: 100%
+        background-color: $menu-default
+        a
+            display: flex
+            align-items: center
+            color: #ffffff
+            padding: 0 16%
+            display: flex
+            width: 100%
+            height: 100%
+        .fas
+            margin: 0 15px
+        &:hover
+            background-color: $menu-active
+        &:hover .sub-menu
+            display: grid
+            background-color: $menu-active
+        &:hover .fas
+            transition: 0.3s
+            transform: rotate(180deg)
+    .sub-menu
+        display: none
+        position: absolute
+        width: 100%
+        right: -100%
+        grid-template-columns: 1fr
+        grid-template-rows: auto
+        li 
+            height: 100px
+            background-color: $menu-active
+            &:hover
+                background-color: $child-menu-hover
+.main-slider 
+    .slick-dots
+        position: absolute
+        bottom: 5%
+        right: 13%
+        display: flex
+        button
+            width: 10px 
+            height: 10px 
+            overflow: hidden 
+            border: none 
+            color: transparent
+            border-radius: 10px 
+            background-color: #9f9e9f
+            cursor: pointer
+        li 
+            margin: 0 4px
+
+        .slick-active
+            button
+                background-color: $icon-color
+    .top-custom-btn
+        position: absolute
+        width: 20px
+        height: 20px
+        top: 45%
+        border: none
+        background-color: transparent
+        color: $icon-color
+        z-index: 999
+        cursor: pointer
+        font-size: 2em
+        &:focus
+            outline: none
+    .slick-next
+        right: 2%
+    .slick-prev
+        left: 2%
+.main-display
+    min-height: 969px
+    background-image: url('../../img/main-banner.png')
+    background-position: center center
+    background-repeat: no-repeat
+    background-size: cover
+    
+
 .previe-info
-    margin: 16% 10%
+    margin: 23% 10% 5%
     color: #ffffff
     h1 
         font-family: "Playfair_Reg"
@@ -406,7 +538,7 @@ footer
         font-size: 16px 
         font-weight: 700 
         line-height: 24px 
-        letter-spacing: 0.32px 
+        letter-spacing: 0.32px
         &-block
             display: flex 
             width: 100% 
@@ -435,3 +567,55 @@ footer
             .icon-1
                 @include bg-url('../../img/icon_2.1.png')
             
+    .footer-contact-info
+        display: grid
+        max-width: 1250px
+        height: 150px
+        margin: 0 auto
+        grid-template-columns: 1fr 1fr 1fr
+        grid-template-rows: 1fr
+        justify-items: center
+        align-items: center
+        box-shadow: 0px 1px 0px 0px rgba(153,153,153,1)
+        .info-block
+            display: flex
+            align-items: center
+            color: $menu-default
+            font-family: "Gotham_Reg"
+            font-size: 13px
+            font-weight: 600
+            line-height: 24.08px
+            .fas
+                margin: 0 20px
+                color: $icon-color
+            span 
+                font-family: 'Gotham_Medium'
+        .mail
+            span 
+                border-bottom: 1px solid $icon-color
+.copyright
+    display: grid 
+    height: 96px
+    grid-template-columns: 1fr 1fr
+    grid-template-rows: 1fr
+    max-width: 1250px
+    margin: 0 auto
+    align-items: center
+    .name
+        margin: 0 19%
+    .company
+        position: relative
+        margin: 0 0 0 38%
+        &:before
+            content: ""
+            position: absolute
+            display: block
+            left: -45px
+            width: 30px
+            height: 30px
+            @include bg-url('../../img/tian.png')
+            background-size: contain
+            background-repeat: no-repeat
+            background-position: center center
+
+@import 'responsive.sass' 
