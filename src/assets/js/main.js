@@ -1,7 +1,6 @@
 const my_func = (function (){
     this.main_display = document.querySelector(".main-display");
     let screen_height = $(window).height(); 
-    console.log(screen_height);
     this.main_display.style.height = `${screen_height}px`;
 })
 
@@ -41,19 +40,6 @@ $(document).ready(function(){
         nextArrow: '<button class="custom-btn slick-next"><i class="fas fa-arrow-right"></i></button>'
     });
   });
-
-
-/*   $(document).ready(function(){
-    let arr = document.querySelectorAll(".slick-slide")
-    setTimeout(() => {
-      arr.forEach(el => {
-        el.style.height = $(window).height();
-      });
-      console.log(1)
-    }, 4000);
-    
-    }
-  ); */
 
   /* responsive-menu */
   $(document).ready(function(){
